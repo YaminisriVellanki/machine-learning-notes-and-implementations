@@ -1,0 +1,27 @@
+# Machine Learning Basics
+
+This file covers the fundamental concepts and terminology required before learning Machine Learning algorithms.
+
+---
+
+## 1. Dataset
+
+A **dataset** is a collection of data used for analysis and Machine Learning.
+
+- **Rows** → Observations / records
+- **Columns** → Features / variables
+
+> **Remember:** Dataset = Collection of observations and variables.
+
+---
+
+## 2. Feature
+
+A **feature** is an input variable used by a Machine Learning model to make predictions.
+
+Example:
+
+```text
+Age
+Salary
+Experience
