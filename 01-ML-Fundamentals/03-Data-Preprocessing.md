@@ -1,8 +1,3 @@
-Absolutely. This time I’ll give you the **entire file content without the outer ` ```markdown ` and ` ``` `**, so you can paste it directly into GitHub's **Edit** box.
-
-**File name:** `03-Data-Preprocessing.md`
-
-Copy from `# Data Preprocessing` to the very last line.
 
 # Data Preprocessing
 
@@ -1432,25 +1427,3 @@ Before training a Machine Learning model:
 
 ---
 
-# 38. What Comes Next?
-
-After understanding Data Preprocessing, the next major topic is:
-
-## Supervised Learning
-
-Topics to study:
-
-* What is Supervised Learning?
-* Classification
-* Regression
-* Training Data
-* Testing Data
-* Validation Data
-* Common Supervised Learning Algorithms
-* Linear Regression
-* Logistic Regression
-* KNN
-* Naive Bayes
-* Decision Tree
-* Random Forest
-* SVM
