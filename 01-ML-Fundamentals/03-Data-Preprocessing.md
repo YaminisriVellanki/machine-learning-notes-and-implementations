@@ -1,18 +1,14 @@
-Absolutely. From now on, I'll make your ML GitHub files for **two purposes**:
+Absolutely. This time I’ll give you the **entire file content without the outer ` ```markdown ` and ` ``` `**, so you can paste it directly into GitHub's **Edit** box.
 
-1. **Interview preparation** → important concepts, interview points, common mistakes, and revision.
-2. **Public learning resource** → clear explanations that another student can understand.
+**File name:** `03-Data-Preprocessing.md`
 
-So the notes should be **professional, accurate, useful, and not just a collection of definitions**.
+Copy from `# Data Preprocessing` to the very last line.
 
-For your next file, use this complete **`03-Data-Preprocessing.md`**. Copy everything inside the box directly into GitHub.
-
-````markdown
 # Data Preprocessing
 
 Data preprocessing is the process of **cleaning, transforming, and preparing raw data** before using it to train a Machine Learning model.
 
-Real-world data is rarely perfect. It may contain missing values, duplicate records, incorrect data types, categorical variables, outliers, and features with different scales.
+Real-world datasets are rarely perfect. They may contain missing values, duplicate records, incorrect data types, categorical variables, outliers, and different feature scales.
 
 > **Goal:** Convert raw data into a clean and suitable form for Machine Learning.
 
@@ -26,58 +22,58 @@ If the input data is poor, the model may learn incorrect or misleading patterns.
 
 Common problems in real-world datasets:
 
-- Missing values
-- Duplicate records
-- Incorrect data types
-- Categorical variables
-- Outliers
-- Different feature scales
-- Irrelevant features
-- Noisy data
-- Data leakage
+* Missing values
+* Duplicate records
+* Incorrect data types
+* Categorical variables
+* Outliers
+* Different feature scales
+* Irrelevant features
+* Noisy data
+* Inconsistent values
+* Data leakage
 
-Therefore, preprocessing is an important part of a Machine Learning workflow.
+### Basic Process
 
-### Key Idea
-
-```text
 Raw Data
-   ↓
+↓
+Understand Data
+↓
 Clean Data
-   ↓
-Transformed Data
-   ↓
-Machine Learning Model
-   ↓
-Predictions
-````
+↓
+Transform Data
+↓
+Feature Selection / Engineering
+↓
+Train Model
+↓
+Evaluate Model
 
-> **Good preprocessing can improve model reliability, performance, and interpretability.**
+> **Important:** Not every dataset requires every preprocessing step. The required steps depend on the dataset, problem, and algorithm.
 
 ---
 
-# 2. Understanding the Dataset
+## 2. Understanding the Dataset
 
-Before performing preprocessing, first understand the dataset.
+Before preprocessing, first understand what the dataset contains.
 
-Important things to check:
+Important things to inspect:
 
 * Number of rows
 * Number of columns
 * Column names
 * Data types
 * Missing values
-* Duplicate values
+* Duplicate records
 * Unique values
-* Numerical columns
-* Categorical columns
+* Numerical features
+* Categorical features
 * Target variable
 * Target distribution
 * Possible outliers
 
 ### Questions to Ask
 
-```text
 1. What does one row represent?
 2. What does each column represent?
 3. Which column is the target?
@@ -86,30 +82,39 @@ Important things to check:
 6. Which features are categorical?
 7. Are there missing values?
 8. Are there duplicate records?
-9. Are there outliers?
-10. Does the selected algorithm require scaling?
-```
+9. Are there unusual values?
+10. Does the algorithm require feature scaling?
 
-> **Best Practice:** Understand the data before deciding how to preprocess it.
+> **Best Practice:** Understand the dataset before deciding how to preprocess it.
 
 ---
 
-# 3. Numerical Data
+## 3. Types of Data
 
-Numerical data contains numbers that represent measurable or countable quantities.
+Data used in Machine Learning can be broadly divided into:
+
+* Numerical Data
+* Categorical Data
+* Boolean Data
+* Text Data
+* Date/Time Data
+
+---
+
+## 3.1 Numerical Data
+
+Numerical data contains numbers representing measurable or countable quantities.
 
 Examples:
 
-```text
-Age
-Salary
-Height
-Weight
-Experience
-Temperature
-```
+* Age
+* Salary
+* Height
+* Weight
+* Experience
+* Temperature
 
-Numerical data can be broadly divided into:
+Numerical data can be divided into two types.
 
 ### Discrete Data
 
@@ -117,11 +122,9 @@ Values that are countable.
 
 Examples:
 
-```text
-Number of students
-Number of rooms
-Number of purchases
-```
+* Number of students
+* Number of rooms
+* Number of purchases
 
 ### Continuous Data
 
@@ -129,29 +132,25 @@ Values that can take a range of numerical values.
 
 Examples:
 
-```text
-Height
-Weight
-Temperature
-Salary
-```
+* Height
+* Weight
+* Temperature
+* Salary
 
 ---
 
-# 4. Categorical Data
+## 3.2 Categorical Data
 
 Categorical data represents groups or categories.
 
 Examples:
 
-```text
-Gender
-City
-Department
-Education Level
-Product Type
-Payment Method
-```
+* Gender
+* City
+* Department
+* Education Level
+* Product Type
+* Payment Method
 
 Example:
 
@@ -162,15 +161,76 @@ Example:
 | Mumbai    |
 | Hyderabad |
 
-Most Machine Learning algorithms require numerical input, so categorical variables may need to be converted into numerical representations.
+Most Machine Learning algorithms require numerical input, so categorical variables often need to be converted into numerical representations.
 
 This process is called **Encoding**.
 
 ---
 
-# 5. Missing Values
+## 3.3 Boolean Data
 
-A missing value occurs when information is unavailable for an observation.
+Boolean data contains two possible values.
+
+Examples:
+
+* True / False
+* Yes / No
+* 0 / 1
+
+Depending on the algorithm and data representation, boolean values may be converted into numerical values.
+
+---
+
+## 3.4 Text Data
+
+Text data contains natural language.
+
+Examples:
+
+* Customer Review
+* Email
+* Product Description
+* News Article
+
+Text usually requires specialized preprocessing techniques such as:
+
+* Tokenization
+* Stop-word handling
+* Stemming
+* Lemmatization
+* Vectorization
+
+Text preprocessing is mainly used in **Natural Language Processing (NLP)** problems.
+
+---
+
+## 3.5 Date and Time Data
+
+Date/time columns can contain information such as:
+
+* Date
+* Time
+* Year
+* Month
+* Day
+* Hour
+
+Useful features can sometimes be extracted from date/time data.
+
+For example:
+
+```text
+Date of Birth → Age
+Date → Year, Month, Day, Day of Week
+```
+
+This is an example of **Feature Engineering**.
+
+---
+
+# 4. Missing Values
+
+A **missing value** occurs when information is unavailable for a particular observation.
 
 Example:
 
@@ -184,7 +244,7 @@ Here, Salary and Experience contain missing values.
 
 ---
 
-## 5.1 Why Are Missing Values a Problem?
+## 4.1 Why Are Missing Values a Problem?
 
 Missing values can:
 
@@ -192,74 +252,117 @@ Missing values can:
 * Reduce the amount of usable data
 * Affect statistical calculations
 * Introduce bias
-* Reduce model performance
+* Affect model performance
 
 However, missing values should not automatically be deleted.
 
-First investigate **why the values are missing**.
+First understand **why the data is missing**.
 
 ---
 
-## 5.2 Methods to Handle Missing Values
+# 5. Methods to Handle Missing Values
 
-### 1. Remove Rows
+Common methods include:
+
+1. Remove rows
+2. Remove columns
+3. Mean imputation
+4. Median imputation
+5. Mode imputation
+6. Advanced imputation
+
+---
+
+## 5.1 Remove Rows
 
 Rows containing missing values can be removed when:
 
 * Only a small number of rows are affected
-* The missing values are not important
-* Removing them does not introduce bias
+* The missing information is not important
+* Removing the rows does not introduce significant bias
 
-### 2. Remove Columns
+> Removing too many rows can result in loss of valuable information.
+
+---
+
+## 5.2 Remove Columns
 
 A column may be removed when:
 
 * It contains a very large proportion of missing values
 * It provides little useful information
+* The feature is not important for the problem
 
-### 3. Mean Imputation
+---
 
-Missing numerical values are replaced with the mean.
+## 5.3 Mean Imputation
 
-```text
-Missing Value → Mean
-```
+Missing numerical values are replaced with the mean of the feature.
 
-Useful when the numerical feature is reasonably symmetric and not strongly affected by outliers.
+Mean imputation can work reasonably well when the feature is approximately symmetric and does not contain severe outliers.
 
-### 4. Median Imputation
+> **Interview Point:** Mean is sensitive to extreme values.
+
+---
+
+## 5.4 Median Imputation
 
 Missing numerical values are replaced with the median.
 
+Median is often preferred when:
+
+* Data is skewed
+* Outliers are present
+
+The median is less sensitive to extreme values than the mean.
+
+> **Interview Point:** Median is generally more robust to outliers than mean.
+
+---
+
+## 5.5 Mode Imputation
+
+Missing categorical values can be replaced with the most frequently occurring category.
+
+This is called **Mode Imputation**.
+
+Example:
+
 ```text
-Missing Value → Median
+Red
+Blue
+Blue
+Blue
+Missing
 ```
 
-Median is often preferred when the feature is skewed or contains outliers.
-
-### 5. Mode Imputation
-
-Missing categorical values can be replaced with the most frequent category.
+The missing value can be replaced with:
 
 ```text
-Missing Category → Mode
+Blue
 ```
 
-### 6. Advanced Imputation
+because Blue is the mode.
 
-Other methods include:
+---
+
+## 5.6 Advanced Imputation
+
+More advanced methods include:
 
 * KNN Imputation
 * Iterative Imputation
 * Model-based imputation
 
-> **Important:** There is no single best missing-value strategy for every dataset.
+These methods can use relationships between features to estimate missing values.
+
+> **Best Practice:** Choose the imputation method based on the dataset and the reason values are missing.
 
 ---
 
 # 6. Duplicates
 
-A duplicate is a repeated record in a dataset.
+A **duplicate** is a repeated record in a dataset.
 
 Example:
 
@@ -269,7 +372,7 @@ Example:
 | B    |  25 |  40000 |
 | A    |  22 |  30000 |
 
-The first and third rows may represent duplicate records.
+The first and third rows may be duplicate records.
 
 ---
 
@@ -282,9 +385,9 @@ Duplicates can:
 * Affect model training
 * Introduce bias
 
-However, not every repeated row is necessarily an error.
+However, repeated records are not always errors.
 
-For example, two identical transactions could be two genuine transactions.
+For example, two identical purchases could represent two genuine transactions.
 
 > **Best Practice:** Investigate duplicates before removing them.
 
@@ -292,7 +395,7 @@ For example, two identical transactions could be two genuine transactions.
 
 # 7. Data Types
 
-Correct data types are important during preprocessing.
+Correct data types are important for analysis and Machine Learning.
 
 Common data types include:
 
@@ -300,72 +403,62 @@ Common data types include:
 
 Whole numbers.
 
-```text
-Age
-Number of rooms
-Years of experience
-```
+Examples:
+
+* Age
+* Number of Rooms
+* Years of Experience
 
 ### Float
 
 Decimal values.
 
-```text
-Height
-Weight
-Temperature
-```
+Examples:
+
+* Height
+* Weight
+* Temperature
 
 ### String
 
 Text values.
 
-```text
-Name
-City
-Department
-```
+Examples:
+
+* Name
+* City
+* Department
 
 ### Boolean
 
 Logical values.
 
-```text
-True / False
-Yes / No
-```
+Examples:
 
-An incorrect data type can cause problems during analysis and model training.
+* True / False
+* Yes / No
+
+Incorrect data types can cause problems during preprocessing and model training.
 
 ---
 
-# 8. Encoding
+# 8. Categorical Data Encoding
 
-**Encoding** is the process of converting categorical variables into numerical representations that Machine Learning algorithms can use.
+**Encoding** is the process of converting categorical variables into numerical representations that Machine Learning algorithms can process.
 
 Common encoding techniques:
 
-1. Label Encoding
-2. One-Hot Encoding
-3. Ordinal Encoding
+* Label Encoding
+* One-Hot Encoding
+* Ordinal Encoding
+
+The correct technique depends on whether the categories have a meaningful order.
 
 ---
 
 # 9. Label Encoding
 
-Label Encoding assigns a numerical value to each category.
-
-Example:
-
-```text
-Red   → 0
-Blue  → 1
-Green → 2
-```
-
-### When to Use?
-
-Label encoding can be appropriate when categories have a meaningful order.
+**Label Encoding** assigns an integer to each category.
 
 Example:
 
@@ -375,7 +468,7 @@ Medium → 1
 High   → 2
 ```
 
-Here:
+This can be appropriate when the categories have a meaningful order:
 
 ```text
 Low < Medium < High
@@ -383,7 +476,7 @@ Low < Medium < High
 
 ### Important Warning
 
-For purely nominal categories such as:
+Suppose we have:
 
 ```text
 Red
@@ -391,15 +484,29 @@ Blue
 Green
 ```
 
-assigning `0, 1, 2` may incorrectly suggest an order.
+If we encode them as:
 
-> **Interview Point:** Do not use arbitrary integer labels for nominal categories when the model could interpret them as ordered.
+```text
+Red   → 0
+Blue  → 1
+Green → 2
+```
+
+the numbers may incorrectly suggest that:
+
+```text
+Red < Blue < Green
+```
+
+when no such relationship exists.
+
+> **Interview Point:** Be careful when using integer encoding for nominal categories because some models may interpret the numbers as ordered.
 
 ---
 
 # 10. One-Hot Encoding
 
-One-Hot Encoding creates a separate binary column for each category.
+**One-Hot Encoding** creates a separate binary column for each category.
 
 Suppose:
 
@@ -419,11 +526,14 @@ It can become:
 |         0 |       1 |      0 |
 |         0 |       0 |      1 |
 
-Each category gets its own column.
+Each row receives:
 
-### When to Use?
+* `1` → Belongs to the category
+* `0` → Does not belong to the category
 
-One-Hot Encoding is commonly used for **nominal categorical variables** where there is no natural order.
+### When is One-Hot Encoding Useful?
+
+It is commonly used for **nominal categorical variables** where categories do not have a natural order.
 
 > **Remember:** One-Hot Encoding → Separate binary columns.
 
@@ -431,7 +541,7 @@ One-Hot Encoding is commonly used for **nominal categorical variables** where th
 
 # 11. Ordinal Encoding
 
-Ordinal Encoding is used when categories have a meaningful order.
+**Ordinal Encoding** is used when categories have a meaningful order.
 
 Example:
 
@@ -442,7 +552,7 @@ Good       → 2
 Excellent  → 3
 ```
 
-The numerical representation preserves the order:
+The order is preserved:
 
 ```text
 Poor < Average < Good < Excellent
@@ -452,23 +562,23 @@ Poor < Average < Good < Excellent
 
 ---
 
-# 12. Label Encoding vs One-Hot Encoding vs Ordinal Encoding
+# 12. Encoding Comparison
 
-| Method           | Main Use                                    |
-| ---------------- | ------------------------------------------- |
-| Label Encoding   | Assigns integer labels to categories        |
-| One-Hot Encoding | Nominal categories with no meaningful order |
-| Ordinal Encoding | Ordered categories                          |
+| Method           | Main Use                             |
+| ---------------- | ------------------------------------ |
+| Label Encoding   | Assigns integer labels to categories |
+| One-Hot Encoding | Nominal categories                   |
+| Ordinal Encoding | Ordered categories                   |
 
 ### Quick Rule
 
 ```text
-No Order
-   ↓
+No meaningful order
+        ↓
 One-Hot Encoding
 
-Meaningful Order
-   ↓
+Meaningful order
+        ↓
 Ordinal Encoding
 ```
 
@@ -498,23 +608,23 @@ Salary:
 Outliers can:
 
 * Distort the mean
-* Affect variance
+* Increase variance
 * Influence regression models
-* Affect distance-based algorithms
-* Affect scaling methods
+* Affect distance calculations
+* Affect some scaling methods
 * Influence statistical analysis
 
-However, an outlier is **not automatically an error**.
+However:
 
-It could represent a genuine observation.
+> **An outlier is not automatically an error.**
 
-> **Best Practice:** Investigate an outlier before removing it.
+It may represent a genuine observation.
 
 ---
 
 # 14. Detecting Outliers
 
-Common techniques include:
+Common methods include:
 
 * IQR Method
 * Z-Score
@@ -527,11 +637,18 @@ Common techniques include:
 
 IQR stands for **Interquartile Range**.
 
+Formula:
+
 ```text
 IQR = Q3 - Q1
 ```
 
-Common boundaries are:
+Where:
+
+* Q1 = First Quartile
+* Q3 = Third Quartile
+
+Common boundaries:
 
 ```text
 Lower Bound = Q1 - 1.5 × IQR
@@ -541,7 +658,7 @@ Upper Bound = Q3 + 1.5 × IQR
 
 Values outside these boundaries are commonly treated as potential outliers.
 
-> **Note:** These are rules for identifying potential outliers, not proof that a value is incorrect.
+> **Note:** This is a rule for identifying potential outliers, not proof that a value is incorrect.
 
 ---
 
@@ -575,27 +692,27 @@ Use this when the value is genuine and meaningful.
 
 ### 2. Remove the Outlier
 
-Use this only when the value is clearly incorrect or irrelevant.
+Use this when the value is clearly incorrect or irrelevant.
 
 ### 3. Cap the Value
 
-Replace extreme values with a chosen upper or lower limit.
+Replace extreme values with selected upper or lower limits.
 
 ### 4. Transform the Feature
 
-A transformation may reduce the effect of extreme values.
+Transformations can reduce the influence of extreme values.
 
 ### 5. Use Robust Methods
 
 Some algorithms and statistical techniques are less sensitive to outliers.
 
-> **Important:** Never remove outliers simply because they look unusual.
+> **Best Practice:** Investigate the reason for an outlier before deciding what to do with it.
 
 ---
 
 # 16. Feature Scaling
 
-**Feature scaling** is the process of transforming numerical features to comparable scales.
+**Feature scaling** is the process of transforming numerical features so that their scales are comparable.
 
 Example:
 
@@ -607,11 +724,11 @@ Experience → 0 to 30
 
 Salary has a much larger numerical scale than Age.
 
-For some algorithms, this difference can strongly affect the model.
+For some algorithms, this can affect the result significantly.
 
 ---
 
-# 17. Why Is Scaling Important?
+# 17. Why Is Feature Scaling Important?
 
 Scaling is especially important for algorithms that depend on:
 
@@ -627,17 +744,16 @@ Examples:
 * SVM
 * PCA
 * Logistic Regression
-* Linear Regression in many optimization settings
 * Neural Networks
 
 Tree-based algorithms generally do not require feature scaling:
 
 * Decision Tree
 * Random Forest
-* Gradient-boosted trees
+* Gradient Boosting
 * XGBoost
 
-> **Important:** Scaling requirements depend mainly on the algorithm, not simply on whether the problem is classification or regression.
+> **Important:** Scaling requirements depend mainly on the algorithm.
 
 ---
 
@@ -662,31 +778,39 @@ Where:
 * `μ` = mean
 * `σ` = standard deviation
 
-A common implementation is `StandardScaler`.
+A common implementation is:
+
+```text
+StandardScaler
+```
 
 ### Important
 
-Standardization does **not** mean that all values become between 0 and 1.
+Standardization does **not** mean all values become between 0 and 1.
 
-> **Remember:** Standardization → Center around 0 with standard deviation around 1.
+> **Remember:** Standardization → Mean approximately 0 and Standard Deviation approximately 1.
 
 ---
 
 # 19. Normalization
 
-Normalization commonly transforms values to a fixed range, often:
+**Normalization** commonly transforms values to a fixed range, often:
 
 ```text
 0 to 1
 ```
 
-Min-Max scaling formula:
+A common Min-Max formula is:
 
 ```text
 x' = (x - xmin) / (xmax - xmin)
 ```
 
-A common implementation is `MinMaxScaler`.
+A common implementation is:
+
+```text
+MinMaxScaler
+```
 
 > **Remember:** Normalization commonly scales values to a bounded range such as 0 to 1.
 
@@ -694,19 +818,19 @@ A common implementation is `MinMaxScaler`.
 
 # 20. Standardization vs Normalization
 
-| Standardization                    | Normalization                          |
-| ---------------------------------- | -------------------------------------- |
-| Mean approximately 0               | Usually scales to a fixed range        |
-| Standard deviation approximately 1 | Commonly 0 to 1                        |
-| Uses mean and standard deviation   | Uses minimum and maximum               |
-| Common for many ML algorithms      | Useful when a bounded range is desired |
+| Standardization                    | Normalization                                 |
+| ---------------------------------- | --------------------------------------------- |
+| Mean approximately 0               | Commonly scales to a fixed range              |
+| Standard deviation approximately 1 | Often 0 to 1                                  |
+| Uses mean and standard deviation   | Uses minimum and maximum                      |
+| Values are not restricted to 0–1   | Values are bounded when using Min-Max scaling |
 
-### Quick Memory Trick
+### Memory Trick
 
 ```text
 Standardization
-→ Mean = 0
-→ Standard Deviation = 1
+→ Mean ≈ 0
+→ Standard Deviation ≈ 1
 
 Normalization
 → Fixed range
@@ -715,9 +839,32 @@ Normalization
 
 ---
 
-# 21. Feature Selection
+# 21. Robust Scaling
 
-**Feature selection** is the process of selecting the most useful features from the available features.
+**Robust Scaling** uses statistics that are less affected by outliers.
+
+It commonly uses:
+
+* Median
+* Interquartile Range (IQR)
+
+Robust scaling can be useful when numerical features contain significant outliers.
+
+### Comparison
+
+| Method          | Main Idea                   | Outlier Sensitivity |
+| --------------- | --------------------------- | ------------------- |
+| Standardization | Mean and standard deviation | More sensitive      |
+| Min-Max Scaling | Minimum and maximum         | More sensitive      |
+| Robust Scaling  | Median and IQR              | Less sensitive      |
+
+> **Remember:** Robust Scaling → Median + IQR.
+
+---
+
+# 22. Feature Selection
+
+**Feature Selection** is the process of selecting the most useful existing features for a Machine Learning model.
 
 Suppose a dataset contains:
 
@@ -729,9 +876,9 @@ Customer ID
 Phone Number
 ```
 
-Customer ID and Phone Number may not be useful predictive features.
+Customer ID and Phone Number may not provide useful predictive information.
 
-Feature selection may keep:
+Useful features might be:
 
 ```text
 Age
@@ -739,7 +886,7 @@ Salary
 Experience
 ```
 
-### Benefits
+### Benefits of Feature Selection
 
 * Reduces unnecessary features
 * Can reduce overfitting
@@ -747,20 +894,20 @@ Experience
 * Reduces computational cost
 * Improves interpretability
 
-> **Remember:** Feature Selection = Selecting useful existing features.
+> **Remember:** Feature Selection = Select useful existing features.
 
 ---
 
-# 22. Feature Engineering
+# 23. Feature Engineering
 
-**Feature engineering** is the process of creating, transforming, or combining features to make them more useful for Machine Learning.
+**Feature Engineering** is the process of creating, transforming, or combining features to make them more useful for Machine Learning.
 
 Example:
 
 ```text
 Date of Birth
       ↓
-Age
+     Age
 ```
 
 Another example:
@@ -772,13 +919,13 @@ Number of Purchases
 Average Purchase Amount
 ```
 
-Feature engineering uses domain knowledge to create meaningful information from existing data.
+Feature engineering often uses domain knowledge.
 
 > **Remember:** Feature Engineering = Create or transform useful features.
 
 ---
 
-# 23. Feature Selection vs Feature Engineering
+# 24. Feature Selection vs Feature Engineering
 
 | Feature Selection            | Feature Engineering                    |
 | ---------------------------- | -------------------------------------- |
@@ -788,11 +935,11 @@ Feature engineering uses domain knowledge to create meaningful information from 
 
 ---
 
-# 24. Data Leakage
+# 25. Data Leakage
 
 **Data leakage** occurs when information that should not be available during model training accidentally influences the training process.
 
-This can result in:
+Data leakage can produce:
 
 * Unrealistically high performance
 * Incorrect evaluation
@@ -802,7 +949,15 @@ This can result in:
 
 Suppose we want to predict whether a student will pass.
 
-If a feature contains the student's **final exam result**, using that feature to predict the result would leak information from the future.
+If the dataset contains:
+
+```text
+Final Exam Result
+```
+
+and we use the final result itself to predict whether the student passes, the model is receiving information that would only be known after the outcome.
+
+This is leakage.
 
 ```text
 Future Information
@@ -814,29 +969,27 @@ Data Leakage
 Unrealistically Good Results
 ```
 
-> **Remember:** Data leakage = Information that would not be available at prediction time influences the model.
+> **Remember:** Information unavailable at prediction time should not be used to make the prediction.
 
 ---
 
-# 25. Data Leakage During Preprocessing
+# 26. Data Leakage During Preprocessing
 
-Data leakage can also happen while preprocessing.
+Data leakage can also happen during preprocessing.
 
-Suppose we want to standardize a feature.
-
-Incorrect approach:
+### Incorrect Approach
 
 ```text
 Entire Dataset
       ↓
-Calculate Mean and Standard Deviation
+Calculate preprocessing statistics
       ↓
-Split into Train/Test
+Train/Test Split
 ```
 
 The test set has influenced the preprocessing.
 
-Correct approach:
+### Correct Approach
 
 ```text
 Dataset
@@ -845,29 +998,29 @@ Train/Test Split
    ↓
 Training Data
    ↓
-Learn Mean and Standard Deviation
+Learn preprocessing parameters
    ↓
 Transform Training Data
 
-Same learned values
+Same learned parameters
    ↓
 Transform Testing Data
 ```
 
-### Key Rule
-
-For preprocessing steps that learn information from the data:
+For transformations that learn information from data:
 
 ```text
 Training Data → fit + transform
 Testing Data  → transform only
 ```
 
+For example, a scaler should be fitted using training data only.
+
 > **Interview Point:** Fit preprocessing transformations only on training data to prevent data leakage.
 
 ---
 
-# 26. Train-Test Split and Preprocessing
+# 27. Train-Test Split and Preprocessing
 
 A common safe workflow is:
 
@@ -889,296 +1042,410 @@ Train Model
 Evaluate Model
 ```
 
-The exact order can vary depending on the preprocessing operation and problem, but the central principle is:
+The central principle is:
 
-> **Information from the test set must not influence what the model learns from the training set.**
+> **The test set must remain unseen when learning preprocessing parameters or making training decisions.**
 
 ---
 
-# 27. Preprocessing Requirements of Common Algorithms
+# 28. Preprocessing and Different Algorithms
 
-| Algorithm           | Scaling Usually Needed? |
-| ------------------- | ----------------------- |
-| Linear Regression   | Often beneficial        |
-| Logistic Regression | Often beneficial        |
-| KNN                 | Yes                     |
-| Naive Bayes         | Depends on data/variant |
-| Decision Tree       | Usually No              |
-| Random Forest       | Usually No              |
-| SVM                 | Yes                     |
-| K-Means             | Yes                     |
-| PCA                 | Yes                     |
-| Gradient Boosting   | Usually No              |
-| XGBoost             | Usually No              |
+Different Machine Learning algorithms have different preprocessing requirements.
+
+| Algorithm           | Scaling Usually Needed?     |
+| ------------------- | --------------------------- |
+| Linear Regression   | Often beneficial            |
+| Logistic Regression | Often beneficial            |
+| KNN                 | Yes                         |
+| Naive Bayes         | Depends on variant and data |
+| Decision Tree       | Usually No                  |
+| Random Forest       | Usually No                  |
+| SVM                 | Yes                         |
+| K-Means             | Yes                         |
+| PCA                 | Yes                         |
+| Gradient Boosting   | Usually No                  |
+| XGBoost             | Usually No                  |
+| Neural Networks     | Usually beneficial          |
 
 ### Why?
 
-Distance-based and magnitude-sensitive algorithms are affected by feature scales.
+Algorithms such as KNN, K-Means, SVM, and PCA are sensitive to feature scale or distance.
 
-Tree-based models generally split data using feature thresholds and are therefore usually insensitive to feature scale.
+Tree-based algorithms generally use feature thresholds and are therefore usually insensitive to feature scaling.
 
 ---
 
-# 28. Preprocessing Pipeline
+# 29. Imbalanced Data
 
-A practical Machine Learning preprocessing pipeline may look like:
+A classification dataset is **imbalanced** when one class contains many more observations than another class.
+
+Example:
 
 ```text
-                  Dataset
-                     ↓
-              Understand Data
-                     ↓
-              Identify Features
-                     ↓
-              Identify Target
-                     ↓
-              Train/Test Split
-                     ↓
-              ┌──────┴──────┐
-              ↓             ↓
-        Numerical        Categorical
-           Data              Data
-              ↓               ↓
-       Imputation        Imputation
-              ↓               ↓
-          Scaling           Encoding
-              └──────┬───────┘
-                     ↓
-               Feature Selection
-                     ↓
-              Feature Engineering
-                     ↓
-                Train Model
-                     ↓
-                 Evaluate
+Class 0 → 950 samples
+Class 1 → 50 samples
 ```
 
-> **Note:** Not every dataset requires every preprocessing step.
+The dataset is highly imbalanced.
 
 ---
 
-# 29. Common Preprocessing Mistakes
+## Why Is Class Imbalance a Problem?
 
-### Mistake 1: Preprocessing blindly
+A model may achieve high accuracy by mostly predicting the majority class while performing poorly on the minority class.
 
-Not every dataset needs the same preprocessing.
+For example:
 
-### Mistake 2: Removing all outliers
+```text
+Accuracy = 95%
+```
 
-Some outliers are genuine and meaningful.
+may look good, but the model could simply predict the majority class for almost every observation.
 
-### Mistake 3: Using the wrong encoding
+---
+
+## Common Approaches
+
+Possible techniques include:
+
+* Oversampling
+* Undersampling
+* SMOTE
+* Class weights
+* Threshold adjustment
+* Appropriate evaluation metrics
+
+Common metrics for imbalanced classification:
+
+* Precision
+* Recall
+* F1-score
+* PR-AUC
+* ROC-AUC
+
+> **Interview Point:** Accuracy alone may be misleading for imbalanced datasets.
+
+---
+
+# 30. Feature Transformation
+
+Sometimes a feature's distribution makes modeling difficult.
+
+Feature transformations can help represent the data more effectively.
+
+Common transformations include:
+
+* Log transformation
+* Square-root transformation
+* Power transformations
+
+For example, a heavily right-skewed feature may sometimes benefit from a logarithmic transformation.
+
+> **Important:** Transformations should be selected based on the data distribution and model requirements.
+
+---
+
+# 31. Data Preprocessing Pipeline
+
+A practical preprocessing pipeline can look like:
+
+```text
+                    Dataset
+                       ↓
+                Understand Data
+                       ↓
+               Identify Features
+                       ↓
+                Identify Target
+                       ↓
+                Train/Test Split
+                       ↓
+             ┌─────────┴─────────┐
+             ↓                   ↓
+        Numerical Data      Categorical Data
+             ↓                   ↓
+        Handle Missing       Handle Missing
+             ↓                   ↓
+           Scaling             Encoding
+             └─────────┬─────────┘
+                       ↓
+                Feature Selection
+                       ↓
+                Feature Engineering
+                       ↓
+                  Train Model
+                       ↓
+                    Evaluate
+```
+
+> **Note:** Not every dataset requires every step.
+
+---
+
+# 32. Common Preprocessing Mistakes
+
+## Mistake 1: Preprocessing Without Understanding the Data
+
+Not every dataset requires the same preprocessing steps.
+
+---
+
+## Mistake 2: Removing All Outliers
+
+Some outliers are genuine observations.
+
+---
+
+## Mistake 3: Using the Wrong Encoding
 
 Using arbitrary integer labels for nominal categories can introduce artificial ordering.
 
-### Mistake 4: Scaling the entire dataset before splitting
+---
 
-This can cause data leakage.
+## Mistake 4: Scaling Before Splitting
 
-### Mistake 5: Using test data during feature selection
-
-The test set should remain unseen until final evaluation.
-
-### Mistake 6: Assuming scaling is always required
-
-Tree-based algorithms generally do not need scaling.
-
-### Mistake 7: Ignoring the meaning of missing values
-
-A missing value may have business or domain meaning.
-
-> **Best Practice:** Preprocessing should be based on the dataset, problem, and algorithm.
+Calculating scaling statistics using the entire dataset can cause data leakage.
 
 ---
 
-# 30. Data Preprocessing Checklist
+## Mistake 5: Using Test Data for Feature Selection
+
+The test set should remain isolated until final evaluation.
+
+---
+
+## Mistake 6: Assuming Scaling Is Always Required
+
+Tree-based algorithms generally do not require scaling.
+
+---
+
+## Mistake 7: Ignoring the Meaning of Missing Values
+
+A missing value may contain useful information about the real-world process.
+
+---
+
+## Mistake 8: Using Accuracy for Every Classification Problem
+
+Accuracy can be misleading when classes are highly imbalanced.
+
+> **Best Practice:** Always connect preprocessing decisions to the dataset, business problem, and selected algorithm.
+
+---
+
+# 33. End-to-End Preprocessing Checklist
 
 Before training a Machine Learning model:
 
-```text
-☐ Understand the dataset
-☐ Identify features
-☐ Identify target
-☐ Check data types
-☐ Check missing values
-☐ Check duplicates
-☐ Identify numerical features
-☐ Identify categorical features
-☐ Encode categorical variables when required
-☐ Investigate outliers
-☐ Select useful features
-☐ Engineer useful features when needed
-☐ Check whether scaling is required
-☐ Split data correctly
-☐ Prevent data leakage
-☐ Train the model
-☐ Evaluate the model
-```
+* [ ] Understand the dataset
+* [ ] Identify features
+* [ ] Identify target
+* [ ] Check data types
+* [ ] Check missing values
+* [ ] Check duplicates
+* [ ] Identify numerical features
+* [ ] Identify categorical features
+* [ ] Encode categorical variables when required
+* [ ] Investigate outliers
+* [ ] Check class imbalance
+* [ ] Select useful features
+* [ ] Engineer useful features when needed
+* [ ] Decide whether scaling is required
+* [ ] Split data correctly
+* [ ] Prevent data leakage
+* [ ] Train the model
+* [ ] Evaluate the model
 
 ---
 
-# 31. 📝 Quick Revision
+# 34. 📝 Quick Revision
 
-| Concept             | Key Point                                                           |
-| ------------------- | ------------------------------------------------------------------- |
-| Missing Values      | Handle unavailable information appropriately                        |
-| Duplicates          | Identify repeated records                                           |
-| Data Types          | Ensure columns have appropriate types                               |
-| Encoding            | Convert categorical variables into usable numerical representations |
-| Label Encoding      | Assigns integer labels                                              |
-| One-Hot Encoding    | Creates binary columns for categories                               |
-| Ordinal Encoding    | Represents ordered categories                                       |
-| Outliers            | Unusually distant observations                                      |
-| IQR                 | Common statistical method for detecting outliers                    |
-| Z-Score             | Measures distance from the mean in standard deviations              |
-| Feature Scaling     | Makes numerical feature scales comparable                           |
-| Standardization     | Mean ≈ 0 and standard deviation ≈ 1                                 |
-| Normalization       | Commonly scales values to 0–1                                       |
-| Feature Selection   | Selects useful existing features                                    |
-| Feature Engineering | Creates or transforms useful features                               |
-| Data Leakage        | Prevents unavailable information from influencing training          |
+| Concept             | Key Point                                                    |
+| ------------------- | ------------------------------------------------------------ |
+| Data Preprocessing  | Preparing raw data for Machine Learning                      |
+| Missing Values      | Handle unavailable information appropriately                 |
+| Duplicates          | Identify repeated records                                    |
+| Data Types          | Ensure columns have appropriate types                        |
+| Encoding            | Convert categorical variables into numerical representations |
+| Label Encoding      | Assigns integer labels                                       |
+| One-Hot Encoding    | Creates binary columns for categories                        |
+| Ordinal Encoding    | Represents ordered categories                                |
+| Outliers            | Unusually distant observations                               |
+| IQR                 | Common method for identifying potential outliers             |
+| Z-Score             | Measures distance from the mean in standard deviations       |
+| Feature Scaling     | Makes numerical feature scales comparable                    |
+| Standardization     | Mean ≈ 0 and standard deviation ≈ 1                          |
+| Normalization       | Commonly scales values to 0–1                                |
+| Robust Scaling      | Uses median and IQR                                          |
+| Feature Selection   | Selects useful existing features                             |
+| Feature Engineering | Creates or transforms useful features                        |
+| Data Leakage        | Prevents unavailable information from influencing training   |
+| Class Imbalance     | Unequal distribution of target classes                       |
 
 ---
 
-# 32. 🧠 Interview Questions
+# 35. 🧠 Interview Questions
 
-### What is data preprocessing?
+### 1. What is data preprocessing?
 
 > Data preprocessing is the process of cleaning, transforming, and preparing raw data before using it to train a Machine Learning model.
 
-### Why is data preprocessing important?
+### 2. Why is data preprocessing important?
 
-> Real-world data can contain missing values, duplicates, categorical variables, outliers, inconsistent formats, and different feature scales. Preprocessing makes the data suitable for Machine Learning.
+> Real-world data may contain missing values, duplicates, categorical variables, outliers, inconsistent formats, and different feature scales. Preprocessing makes the data suitable for Machine Learning.
 
-### How do you handle missing values?
+### 3. How do you handle missing values?
 
-> Depending on the dataset, missing values can be handled by removing rows or columns, using mean, median, or mode imputation, or applying more advanced imputation techniques.
+> Depending on the dataset, missing values can be handled by removing rows or columns, using mean, median, or mode imputation, or applying advanced imputation techniques.
 
-### When would you use median instead of mean?
+### 4. When would you use median instead of mean?
 
 > Median is often preferred when the data is skewed or contains outliers because it is less sensitive to extreme values.
 
-### What is encoding?
+### 5. What is encoding?
 
 > Encoding converts categorical variables into numerical representations that Machine Learning algorithms can process.
 
-### Label Encoding vs One-Hot Encoding?
+### 6. What is the difference between Label Encoding and One-Hot Encoding?
 
-> Label Encoding assigns integer labels to categories, while One-Hot Encoding creates separate binary columns for categories.
+> Label Encoding assigns integer values to categories, while One-Hot Encoding creates separate binary columns for categories.
 
-### When is One-Hot Encoding preferred?
+### 7. When is One-Hot Encoding preferred?
 
-> It is commonly preferred for nominal categorical variables where categories do not have a meaningful order.
+> One-Hot Encoding is commonly preferred for nominal categorical variables where categories do not have a meaningful order.
 
-### What is an outlier?
+### 8. What is Ordinal Encoding?
+
+> Ordinal Encoding represents categorical variables with a meaningful order using numerical values.
+
+### 9. What is an outlier?
 
 > An outlier is an observation that is unusually far from the other observations.
 
-### Should we always remove outliers?
+### 10. Should we always remove outliers?
 
 > No. An outlier may be a genuine observation. It should be investigated before deciding whether to keep, remove, cap, or transform it.
 
-### What is feature scaling?
+### 11. What is the IQR?
 
-> Feature scaling transforms numerical features to comparable scales.
+> IQR stands for Interquartile Range and is calculated as Q3 minus Q1. It is commonly used to identify potential outliers.
 
-### Why is scaling important for KNN?
+### 12. What is feature scaling?
 
-> KNN uses distance calculations. If features have very different scales, a large-scale feature can dominate the distance calculation.
+> Feature scaling transforms numerical features so that their scales are comparable.
 
-### Why don't Decision Trees usually require scaling?
+### 13. Why is scaling important for KNN?
+
+> KNN uses distance calculations. If features have different scales, a large-scale feature can dominate the distance calculation.
+
+### 14. Why doesn't a Decision Tree usually require scaling?
 
 > Decision Trees make decisions using feature thresholds rather than distance calculations, so their performance is generally insensitive to feature scale.
 
-### What is standardization?
+### 15. What is Standardization?
 
 > Standardization transforms a feature so that it has approximately mean 0 and standard deviation 1.
 
-### What is normalization?
+### 16. What is Normalization?
 
 > Normalization commonly scales values to a fixed range such as 0 to 1.
 
-### What is feature selection?
+### 17. Standardization vs Normalization?
 
-> Feature selection is the process of selecting the most useful existing features for a Machine Learning model.
+> Standardization uses the mean and standard deviation, while normalization commonly uses minimum and maximum values to scale data to a fixed range.
 
-### What is feature engineering?
+### 18. What is Feature Selection?
 
-> Feature engineering is the process of creating or transforming features to make them more useful for Machine Learning.
+> Feature Selection is the process of selecting the most useful existing features for a Machine Learning model.
 
-### What is data leakage?
+### 19. What is Feature Engineering?
+
+> Feature Engineering is the process of creating, transforming, or combining features to make them more useful for Machine Learning.
+
+### 20. What is Data Leakage?
 
 > Data leakage occurs when information that should not be available during training influences the model or preprocessing process.
 
-### How can preprocessing cause data leakage?
+### 21. How can preprocessing cause data leakage?
 
-> Leakage can occur when preprocessing statistics or decisions are learned using the test set. Preprocessing transformations that learn from data should generally be fitted on the training set and then applied to the test set.
+> Leakage can occur when preprocessing statistics are learned using the test set. Transformations that learn from data should generally be fitted on the training set and then applied to the test set.
+
+### 22. What is class imbalance?
+
+> Class imbalance occurs when the target classes have significantly different numbers of observations.
+
+### 23. Why can accuracy be misleading for imbalanced data?
+
+> A model can achieve high accuracy by mostly predicting the majority class while performing poorly on the minority class.
+
+### 24. Which metrics can be useful for imbalanced classification?
+
+> Precision, Recall, F1-score, PR-AUC, and ROC-AUC can be useful depending on the problem and the relative costs of different errors.
 
 ---
 
-# 33. ⭐ Interview Memory Map
+# 36. ⭐ Interview Memory Map
 
 ```text
                     DATA PREPROCESSING
                            │
-        ┌──────────────────┼──────────────────┐
-        ↓                  ↓                  ↓
-      CLEAN             TRANSFORM           SELECT
-        │                  │                  │
-   Missing Values       Encoding        Feature Selection
+          ┌────────────────┼────────────────┐
+          ↓                ↓                ↓
+        CLEAN           TRANSFORM          SELECT
+          │                │                │
+   Missing Values       Encoding       Feature Selection
    Duplicates           Scaling
    Data Types           Outliers
                         Feature
                         Engineering
-                           │
-                           ↓
-                    Prevent Leakage
-                           │
-                           ↓
-                     Train Model
-                           │
-                           ↓
-                       Evaluate
+          │                │
+          └────────┬───────┘
+                   ↓
+             Check Imbalance
+                   ↓
+            Prevent Leakage
+                   ↓
+              Train Model
+                   ↓
+                Evaluate
 ```
 
 ---
 
-# 34. Final Takeaways
+# 37. Final Takeaways
 
-```text
 1. Understand the dataset before preprocessing.
-
 2. Handle missing values based on the data and problem.
-
-3. Do not remove outliers without investigating them.
-
-4. Use appropriate encoding for categorical variables.
-
-5. Scale features when the algorithm requires or benefits from it.
-
-6. Feature selection removes unnecessary features.
-
-7. Feature engineering creates useful representations.
-
-8. Keep the test set isolated from training decisions.
-
-9. Prevent data leakage at every stage.
-
-10. There is no single preprocessing pipeline that works for every dataset.
-```
+3. Investigate duplicates before removing them.
+4. Choose encoding based on the type of categorical variable.
+5. Do not remove outliers without investigating them.
+6. Scale features when the selected algorithm requires or benefits from it.
+7. Feature Selection selects useful existing features.
+8. Feature Engineering creates or transforms useful features.
+9. Keep the test set isolated from training decisions.
+10. Prevent data leakage at every stage.
+11. Check class imbalance in classification problems.
+12. Do not rely on accuracy alone for highly imbalanced datasets.
+13. There is no universal preprocessing pipeline.
+14. Good preprocessing should be driven by the dataset, problem, and algorithm.
 
 ---
 
-## Next Topic
+# 38. What Comes Next?
 
-# Supervised Learning
+After understanding Data Preprocessing, the next major topic is:
 
-Topics:
+## Supervised Learning
+
+Topics to study:
 
 * What is Supervised Learning?
 * Classification
 * Regression
-* Training and Testing
+* Training Data
+* Testing Data
+* Validation Data
 * Common Supervised Learning Algorithms
 * Linear Regression
 * Logistic Regression
@@ -1187,20 +1454,3 @@ Topics:
 * Decision Tree
 * Random Forest
 * SVM
-
-````
-
-### Your GitHub structure now
-
-```text
-machine-learning-notes-and-implementations/
-│
-├── 01-ML-Fundamentals/
-│   ├── 01-Introduction-to-Machine-Learning.md
-│   ├── 02-ML-Basics.md
-│   └── 03-Data-Preprocessing.md
-│
-└── README.md
-````
-
-This is the standard I'll follow for your **future ML notes**: **interview-ready + publicly useful + technically accurate + concise enough to revise**.
